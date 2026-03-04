@@ -7,7 +7,7 @@ DataScienceCourse
 https://tinyuchen.github.io/DataScienceCourse_week01/
 
 ## GitHub Repo
-（把你的 Repo 網址貼在這裡）
+https://github.com/tinyuchen/DataScienceCourse_week01
 
 ---
 
@@ -48,7 +48,7 @@ https://tinyuchen.github.io/DataScienceCourse_week01/
 
 ---
 
-## AI 使用聲明（必填）
+## AI 使用聲明
 我使用 AI 的範圍：
 - 產出網站 HTML/CSS/JS 的初稿結構與文案草稿
 - 協助整理「可能的」伊朗風險因子清單（僅作為初步 brainstorming）
