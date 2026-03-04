@@ -9,7 +9,8 @@ RAW = ROOT / "data" / "raw.txt"
 OUT = ROOT / "data" / "cleaned.json"
 SVG = ROOT / "assets" / "population_sparkline.svg"
 
-YEAR_RE = re.compile(r"(19\d{2}|20\d{2})")
+#YEAR_RE = re.compile(r"(19\d{2}|20\d{2})")
+YEAR_RE = re.compile(r"(\d{4})")
 NUM_RE  = re.compile(r"(\d+(?:\.\d+)?)\s*(billion|b|bn)?", re.IGNORECASE)
 
 def parse_raw(text: str):
@@ -18,12 +19,27 @@ def parse_raw(text: str):
         line = line.strip()
         if not line or line.startswith("#"):
             continue
+        """
         y_m = YEAR_RE.search(line)
         n_m = NUM_RE.search(line)
         if not (y_m and n_m):
             continue
 
         year = int(y_m.group(1))
+        """
+        y_m_all = YEAR_RE.findall(line)
+        if not y_m_all:
+            continue
+        
+        # 找第一個看起來像年份的 4 位數（1900~2200）
+        year = None
+        for ytxt in y_m_all:
+            y = int(ytxt)
+            if 1900 <= y <= 2200:
+                year = y
+                break
+        if year is None:
+            continue
         val  = float(n_m.group(1))
         unit = (n_m.group(2) or "").lower()
 
@@ -103,6 +119,7 @@ def main():
     # 作業要求：2024/2030/2050/2100 + 計算平均、成長率、CAGR，輸出 JSON 並顯示在網站 :contentReference[oaicite:4]{index=4} :contentReference[oaicite:5]{index=5}
     need_years = {2024, 2030, 2050, 2100}
     got_years = {d["year"] for d in data}
+    print("Parsed years:", sorted(got_years))
     if not need_years.issubset(got_years):
         raise SystemExit(f"Missing years: {sorted(need_years - got_years)} in data/raw.txt")
 
