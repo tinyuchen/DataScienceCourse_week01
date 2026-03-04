@@ -1,0 +1,6 @@
+# UN WPP 2024 / OWID (UN projections) - world population key milestones
+Year: 2024 | Population: 8.2B
+2030, 8.5 billion
+2050 => 9.6B (medium projection)
+2100 : 10.2B
+note: units are "billion people"
