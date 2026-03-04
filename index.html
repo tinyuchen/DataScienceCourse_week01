@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Population & Geopolitical Risk Dashboard</title>
+  <meta name="description" content="World population projection + Iran geopolitical risk matrix (facts vs inference)." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="kicker">Global Population & Geopolitical Risk Dashboard</p>
+      <h1>人口結構變化將放大地緣政治衝擊：能源通道與制裁是風險放大器</h1>
+      <p class="sub">作者：<span class="author">（請填你的名字）</span></p>
+      <div class="ctaRow">
+        <a class="btn" href="#population">看人口預測</a>
+        <a class="btn ghost" href="#iran">看 Iran Risk Matrix</a>
+        <a class="btn ghost" href="#method">看方法論</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Population -->
+    <section id="population" class="card">
+      <div class="sectionHead">
+        <h2>世界人口預測（UN WPP / OWID with UN projections）</h2>
+        <p class="muted">資料由 scripts/clean.py 清理 raw.txt 輸出 data/cleaned.json，前端再讀取顯示。</p>
+      </div>
+
+      <div class="grid4">
+        <div class="stat"><div class="label">2024</div><div class="value" id="p2024">—</div></div>
+        <div class="stat"><div class="label">2030</div><div class="value" id="p2030">—</div></div>
+        <div class="stat"><div class="label">2050</div><div class="value" id="p2050">—</div></div>
+        <div class="stat"><div class="label">2100</div><div class="value" id="p2100">—</div></div>
+      </div>
+
+      <figure class="figure">
+        <img src="assets/population_sparkline.svg" alt="World population projection sparkline" loading="lazy" />
+        <figcaption class="muted">
+          圖片來源：本專案 scripts/clean.py 產生（SVG）。
+        </figcaption>
+      </figure>
+
+      <div class="metrics">
+        <div class="metric">
+          <div class="label">平均值（四個年份）</div>
+          <div class="value" id="meanPop">—</div>
+        </div>
+        <div class="metric">
+          <div class="label">CAGR（2024→2100）</div>
+          <div class="value" id="cagrAll">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Iran -->
+    <section id="iran" class="card">
+      <div class="sectionHead">
+        <h2>伊朗地緣政治風險分析（Facts vs Inference）</h2>
+        <p class="muted">每個風險因子都分「事實資料」與「推論」，並提供來源。</p>
+      </div>
+
+      <div class="grid2">
+        <article class="risk">
+          <h3>1) 核計畫／監督受限</h3>
+          <p><b>Facts：</b>IAEA 針對伊朗核查與監測有季度性報告。</p>
+          <p><b>Inference：</b>監督中斷或談判失敗，可能提高衝突風險溢價。</p>
+        </article>
+
+        <article class="risk">
+          <h3>2) Strait of Hormuz 海運通道中斷</h3>
+          <p><b>Facts：</b>EIA 指出 Hormuz 為全球重要油氣運輸咽喉。</p>
+          <p><b>Inference：</b>若通道受阻，油價與供應鏈波動可能擴散。</p>
+        </article>
+
+        <article class="risk">
+          <h3>3) 制裁收緊／執法升級</h3>
+          <p><b>Facts：</b>OFAC 維持 Iran Sanctions 計畫並更新指南。</p>
+          <p><b>Inference：</b>金融與油收壓力上升，可能提高內部不穩定性。</p>
+        </article>
+
+        <article class="risk">
+          <h3>4) 代理人衝突外溢</h3>
+          <p><b>Facts：</b>多家研究機構討論伊朗代理人網路對區域安全的影響。</p>
+          <p><b>Inference：</b>代理人衝突若疊加能源通道事件，可能形成複合風險。</p>
+        </article>
+      </div>
+
+      <h3 class="mt">Iran Risk Matrix</h3>
+      <div class="tableWrap" role="region" aria-label="Iran Risk Matrix table" tabindex="0">
+        <table>
+          <thead>
+            <tr>
+              <th>風險因子</th>
+              <th>機率（低/中/高）</th>
+              <th>影響程度</th>
+              <th>資料來源</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>核計畫／監督受限</td>
+              <td>高</td>
+              <td>高</td>
+              <td><a href="https://www.iaea.org/sites/default/files/25/06/gov2025-24.pdf" target="_blank" rel="noreferrer">IAEA（GOV/2025/24）</a></td>
+            </tr>
+            <tr>
+              <td>Hormuz 通道中斷</td>
+              <td>中-高</td>
+              <td>高</td>
+              <td><a href="https://www.eia.gov/todayinenergy/detail.php?id=65504" target="_blank" rel="noreferrer">EIA（Hormuz chokepoint）</a></td>
+            </tr>
+            <tr>
+              <td>制裁收緊／執法升級</td>
+              <td>高</td>
+              <td>中-高</td>
+              <td><a href="https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions" target="_blank" rel="noreferrer">OFAC（Iran sanctions）</a></td>
+            </tr>
+            <tr>
+              <td>代理人衝突外溢</td>
+              <td>中</td>
+              <td>高</td>
+              <td><a href="https://www.brookings.edu/articles/the-path-forward-on-iran-and-its-proxy-forces/" target="_blank" rel="noreferrer">Brookings（proxy forces）</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="muted small">
+        AI 偏誤控管：地緣政治議題容易把「推論」說成「事實」。因此本頁以 Facts / Inference 分層，並要求每個 Fact 都能追溯來源。
+      </p>
+    </section>
+
+    <!-- Methodology -->
+    <section id="method" class="card">
+      <div class="sectionHead">
+        <h2>方法論：AI 如何使用？如何驗證資料？</h2>
+      </div>
+
+      <h3>AI 使用方式</h3>
+      <ul>
+        <li>用 AI 產出 HTML/CSS/JS 初稿，再手動調整 RWD 與樣式（避免整站模板）。</li>
+        <li>用 AI 輔助整理「可能的風險因子」，但所有 Facts 都回到一手來源核對。</li>
+      </ul>
+
+      <h3>驗證流程（含 AI 數字不一致處理）</h3>
+      <ol>
+        <li>人口數據：引用 UN World Population Prospects 或 Our World in Data（UN projections），將來源寫入 README。</li>
+        <li>若不同 AI 給出不同數字：以 UN/OWID 的可追溯資料為準，並在 README 記錄「差異」與「採用理由」。</li>
+        <li>地緣政治：Facts 必須附來源；沒有來源的一律降級為 Inference（或刪除）。</li>
+      </ol>
+    </section>
+
+    <footer class="footer muted">
+      <p>© <span id="yearNow"></span> Global Population & Geopolitical Risk Dashboard</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
