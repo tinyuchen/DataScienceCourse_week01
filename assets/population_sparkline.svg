@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" role="img" aria-label="World population projection sparkline">
+  <rect x="0" y="0" width="900" height="260" fill="white"/>
+  <path d="M 34.0,226.0 L 99.7,197.2 L 318.6,91.6 L 866.0,34.0" fill="none" stroke="black" stroke-width="3"/>
+  <g fill="black"><circle cx="34.0" cy="226.0" r="5" />
+<circle cx="99.7" cy="197.2" r="5" />
+<circle cx="318.6" cy="91.6" r="5" />
+<circle cx="866.0" cy="34.0" r="5" /></g>
+  <g font-family="system-ui, -apple-system, Segoe UI, Roboto" font-size="14" fill="black"><text x="34.0" y="216.0" text-anchor="middle">8.2B</text>
+<text x="99.7" y="187.2" text-anchor="middle">8.5B</text>
+<text x="318.6" y="81.6" text-anchor="middle">9.6B</text>
+<text x="866.0" y="24.0" text-anchor="middle">10.2B</text></g>
+</svg>

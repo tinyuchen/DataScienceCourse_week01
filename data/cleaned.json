@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "topic": "Global Population & Geopolitical Risk Dashboard",
+    "unit": "billion people",
+    "source_note": "UN World Population Prospects (WPP 2024) / Our World in Data (UN projections). Values transcribed into raw.txt; cleaned by scripts/clean.py."
+  },
+  "years": [
+    {
+      "year": 2024,
+      "population_billion": 8.2,
+      "population": 8200000000
+    },
+    {
+      "year": 2030,
+      "population_billion": 8.5,
+      "population": 8500000000
+    },
+    {
+      "year": 2050,
+      "population_billion": 9.6,
+      "population": 9600000000
+    },
+    {
+      "year": 2100,
+      "population_billion": 10.2,
+      "population": 10200000000
+    }
+  ],
+  "summary": {
+    "mean_population_billion": 9.125,
+    "growth_rates": [
+      {
+        "from": 2024,
+        "to": 2030,
+        "growth_rate": 0.03658536585365857,
+        "growth_rate_pct": 3.658536585365857
+      },
+      {
+        "from": 2030,
+        "to": 2050,
+        "growth_rate": 0.12941176470588234,
+        "growth_rate_pct": 12.941176470588234
+      },
+      {
+        "from": 2050,
+        "to": 2100,
+        "growth_rate": 0.0625,
+        "growth_rate_pct": 6.25
+      }
+    ],
+    "cagr_2024_2100": 0.0028758848931125236,
+    "cagr_2024_2100_pct": 0.28758848931125236
+  }
+}
