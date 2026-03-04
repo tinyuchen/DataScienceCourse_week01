@@ -1,0 +1,32 @@
+name: Build data artifacts
+
+on:
+  push:
+    paths:
+      - "data/raw.txt"
+      - "scripts/clean.py"
+      - ".github/workflows/build-data.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run cleaner
+        run: python scripts/clean.py
+
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/cleaned.json assets/population_sparkline.svg
+          git commit -m "build: generate cleaned.json and sparkline" || echo "No changes"
+          git push
