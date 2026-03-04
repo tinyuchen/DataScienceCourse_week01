@@ -1,0 +1,44 @@
+:root { --card:#121824; --text:#e8eef6; --muted:#a9b4c2; --line:#263244; }
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans TC", sans-serif; color: var(--text); background:#070a0e; }
+a { color: var(--text); }
+.container { width:min(1000px, 92vw); margin: 0 auto; }
+
+.hero { padding: 56px 0 32px; background: radial-gradient(1200px 500px at 20% 0%, #1b2a44 0%, #070a0e 60%); border-bottom: 1px solid var(--line); }
+.kicker { letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin:0 0 10px; font-size: 12px; }
+.hero h1 { margin:0 0 10px; font-size: clamp(22px, 4vw, 36px); line-height: 1.2; }
+.sub { margin: 0 0 18px; color: var(--muted); }
+.ctaRow { display:flex; gap:10px; flex-wrap: wrap; }
+.btn { display:inline-block; padding:10px 14px; border-radius: 12px; background: #1c2b46; border:1px solid #2b3d5d; text-decoration: none; }
+.btn.ghost { background: transparent; }
+
+.card { background: var(--card); border:1px solid var(--line); border-radius: 18px; padding: 18px; margin: 18px 0; }
+.sectionHead h2 { margin:0 0 6px; }
+.muted { color: var(--muted); margin: 0; }
+.small { font-size: 12px; }
+
+.grid4 { display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+.grid2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; }
+.stat, .metric, .risk { padding: 14px; border:1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,0.02); }
+.value { font-size: 22px; font-weight: 700; }
+.label { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+
+.figure { margin: 14px 0 0; }
+.figure img { width: 100%; height: auto; border-radius: 14px; border:1px solid var(--line); background: white; }
+
+.metrics { display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; }
+.mt { margin-top: 18px; }
+
+.tableWrap { overflow:auto; border:1px solid var(--line); border-radius: 16px; }
+table { width: 100%; border-collapse: collapse; min-width: 720px; }
+th, td { padding: 10px; border-bottom: 1px solid var(--line); text-align: left; }
+thead th { background: rgba(255,255,255,0.04); }
+tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+.footer { padding: 20px 0 30px; text-align: center; }
+
+@media (max-width: 820px) {
+  .grid4 { grid-template-columns: repeat(2, 1fr); }
+  .grid2 { grid-template-columns: 1fr; }
+  .metrics { grid-template-columns: 1fr; }
+}
