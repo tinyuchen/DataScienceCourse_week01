@@ -14,52 +14,46 @@ YEAR_RE = re.compile(r"(\d{4})")
 NUM_RE  = re.compile(r"(\d+(?:\.\d+)?)\s*(billion|b|bn)?", re.IGNORECASE)
 
 def parse_raw(text: str):
-    rows = []
+    data_by_year = {}
+
     for line in text.splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        """
-        y_m = YEAR_RE.search(line)
-        n_m = NUM_RE.search(line)
-        if not (y_m and n_m):
-            continue
 
-        year = int(y_m.group(1))
-        """
-        y_m_all = YEAR_RE.findall(line)
-        if not y_m_all:
-            continue
-        
-        # 找第一個看起來像年份的 4 位數（1900~2200）
-        year = None
-        for ytxt in y_m_all:
-            y = int(ytxt)
-            if 1900 <= y <= 2200:
-                year = y
-                break
+        # 1) 抓年份：挑第一個看起來像年份的 4 位數（1900~2200）
+        years = [int(y) for y in YEAR_RE.findall(line)]
+        year = next((y for y in years if 1900 <= y <= 2200), None)
         if year is None:
             continue
-        val  = float(n_m.group(1))
-        unit = (n_m.group(2) or "").lower()
 
-        # 本作業 raw.txt：預設單位就是 billion
-        if unit in ("billion", "b", "bn", ""):
-            pop_billion = val
-        else:
-            pop_billion = val
+        # 2) 抓所有數字（含單位），挑一個「不是年份、且 < 100」的當人口（Billion）
+        nums = [(float(m.group(1)), (m.group(2) or "").lower()) for m in NUM_RE.finditer(line)]
 
-        rows.append((year, pop_billion))
+        pop = None
+        for v, u in nums:
+            # 跳過年份本身（例如 2024）
+            if abs(v - year) < 1e-9:
+                continue
+            # 人口（billion）通常 < 100（8.2, 9.6, 10.2）
+            if v < 100:
+                pop = v
+                break
 
-    # 去重：同一年只保留最後一筆
-    d = {}
-    for y, p in rows:
-        d[y] = p
+        if pop is None:
+            continue
 
-    return [{"year": y,
-             "population_billion": d[y],
-             "population": int(round(d[y] * 1_000_000_000))}
-            for y in sorted(d.keys())]
+        data_by_year[year] = pop
+
+    data = [
+        {
+            "year": y,
+            "population_billion": data_by_year[y],
+            "population": int(round(data_by_year[y] * 1_000_000_000)),
+        }
+        for y in sorted(data_by_year.keys())
+    ]
+    return data
 
 def growth_rates(data):
     out = []
