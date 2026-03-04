@@ -3,8 +3,8 @@ DataScienceCourse
 # Global Population & Geopolitical Risk Dashboard
 作者：陳亭妤
 
-## GitHub Pages（可點擊網站）
-（完成 Step 9 後，把 Pages 網址貼在這裡）
+## GitHub Pages
+https://tinyuchen.github.io/DataScienceCourse_week01/
 
 ## GitHub Repo
 （把你的 Repo 網址貼在這裡）
