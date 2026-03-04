@@ -39,7 +39,6 @@ DataScienceCourse
 ### 伊朗風險資料
 - IAEA（核查/監督相關文件）：
   https://www.iaea.org/
-  （若你網站表格引用 GOV/xxxx/xx，請把該 PDF 連結也貼在這裡）
 - EIA（Hormuz chokepoint）：
   https://www.eia.gov/todayinenergy/detail.php?id=65504
 - OFAC（Iran sanctions）：
